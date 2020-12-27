@@ -1,5 +1,6 @@
 import React, { useContext } from "react"; // useContext to pull out state
 import { GlobalContext } from "../context/GlobalState"; // global state
+import { numberWithCommas } from "../utils-funcs/to-commas";
 
 const Balance = () => {
   // get state: useContext because we are not passing it as props, we want whole transactions objects
@@ -11,7 +12,7 @@ const Balance = () => {
   return (
     <>
       <h4>Balance</h4>
-      <h1 id="balance">${total}</h1>
+      <h1 id="balance">$ {numberWithCommas(total)}</h1>
     </>
   );
 };

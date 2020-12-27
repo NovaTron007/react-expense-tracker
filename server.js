@@ -16,6 +16,10 @@ const app = express();
 // body parser to parse req.body data
 app.use(express.json());
 
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
+
 // import routes & use routes file
 const transactions = require("./routes/transactionsRoutes");
 app.use("/api/v1/transactions", transactions); //connect routes file

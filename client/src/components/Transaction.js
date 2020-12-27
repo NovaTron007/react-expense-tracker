@@ -1,5 +1,6 @@
 import React, { useContext } from "react"; // useContext to pull out state
 import { GlobalContext } from "../context/GlobalState"; // global state
+import { numberWithCommas } from "../utils-funcs/to-commas";
 
 // props desctructure
 const Transaction = ({ transaction }) => {
@@ -13,9 +14,9 @@ const Transaction = ({ transaction }) => {
       <li className={transaction.amount > 0 ? "plus" : "minus"}>
         {transaction.text}
         <span>
-          {sign}${Math.abs(transaction.amount)} {/* display num as positive, regardless of array. Use sign instead */}
+          {sign}${numberWithCommas(Math.abs(transaction.amount))} {/* display num as positive, regardless of array. Use sign instead */}
         </span>
-        <button className="delete-btn" onClick={() => deleteTransaction(transaction.id)}>
+        <button className="delete-btn" onClick={() => deleteTransaction(transaction._id)}>
           x
         </button>
       </li>

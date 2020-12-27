@@ -9,13 +9,13 @@ const Transaction = require("../models/Transaction");
 exports.getTransactions = async (req, res, next) => {
   try {
     const transactions = await Transaction.find();
-    // success
+    // success send response
     return res.status(200).json({
       success: true,
       count: transactions.length,
       data: transactions
     });
-  } catch (error) {
+  } catch (err) {
     // server error
     res.send(500).json({
       success: false,
@@ -33,7 +33,7 @@ exports.addTransaction = async (req, res, next) => {
     const { text, amount } = req.body;
     // create new transaction in db
     const transaction = await Transaction.create(req.body);
-    // success
+    // success send response
     return res.status(201).json({
       success: true,
       data: transaction
